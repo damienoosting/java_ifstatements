@@ -9,15 +9,21 @@ public class Application implements Runnable {
     }
 
     public void run() {
-        SaxionApp.print("enter age: ");
-        int age = SaxionApp.readInt();
-        SaxionApp.print("enter position: ");
-        String p = SaxionApp.readString();
+        SaxionApp.print("What is the name of the place? ");
+        String name = SaxionApp.readString();
 
-        if ((p.equalsIgnoreCase("striker") && age <= 20) || (p.equalsIgnoreCase("midfielder") && age <= 23) || (p.equalsIgnoreCase("defender")&& age <= 30)){
-            SaxionApp.printLine("suitable player", Color.GREEN);}
-            else{
-                SaxionApp.printLine("nope... next", Color.red);
+        SaxionApp.printLine("Does the place have an (old) city wall? [y/n] ");
+        boolean hasCityWall = SaxionApp.readChar() == 'y';
+
+        SaxionApp.printLine("Did the place get city rights at one point in history? [y/n] ");
+        boolean hasCityRights = SaxionApp.readChar() == 'y';
+
+        if (name.equalsIgnoreCase("Enschede")|| name.equalsIgnoreCase("deventer")|| (hasCityRights && hasCityWall)) {
+            SaxionApp.print(name + " is a city!", Color.GREEN);
+
+        }   else{
+                 SaxionApp.print(name + " is NOT a city!", Color.RED);
         }
-}}
+    }
 
+}
